@@ -7,6 +7,7 @@ int main(void)
   float loan_amount = 0.0;
   float interest_rate = 0.0;
   float monthly_payment = 0.0;
+  int number_months = 0;
 
   printf("Enter amount of loan: ");
   scanf("%f", &loan_amount);
@@ -17,20 +18,20 @@ int main(void)
   printf("Enter monthly payment: ");
   scanf("%f", &monthly_payment);
 
-  float first_tax_calculator = (interest_rate / 100 / 12 * loan_amount);
-  float first_payment = (loan_amount + first_tax_calculator - monthly_payment);
-  printf ( "First Month Payment: ");
-  printf ( "%.2f\n", first_payment);
+  printf("Enter the number months: ");
+  scanf("%d", &number_months);
 
-  float second_tax_calculator = (interest_rate / 100 / 12 * first_payment);
-  float second_payment = (first_payment + second_tax_calculator - monthly_payment);
-  printf ( "Second Month Payment: ");
-  printf ( "%.2f\n", second_payment);
+  // float tax_calculator = (interest_rate / 100 / 12 * loan_amount);
+  // float payment = (loan_amount + tax_calculator - monthly_payment);
 
-  float third_tax_calculator = (interest_rate / 100 / 12 * second_payment);
-  float third_payment = (second_payment + third_tax_calculator - monthly_payment);
-  printf ( "Third Month Payment: ");
-  printf ( "%.2f\n", third_payment);
+  for(int i = 1; i <= number_months; i++)
+  {
+    float tax_calculator = (interest_rate / 100 / 12 * loan_amount);
+    loan_amount = (loan_amount + tax_calculator - monthly_payment);
+    printf ( "Month %d Balance: %.2f", i, loan_amount);
+    printf ( "\n");
+
+  }
 
   return 0;
 }
