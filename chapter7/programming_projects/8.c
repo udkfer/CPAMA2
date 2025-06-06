@@ -16,9 +16,12 @@
 int main(void)
 {
   int h, m;
+  char ch;
 
   printf("Enter a 24-hour time(h:m): ");
-  scanf("%d:%d", &h, &m);
+  scanf("%d:%d ", &h, &m);
+  ch = getchar();
+  printf("%d:%d%c\n", h, m, ch);
 
   int minutes = (h * 60) + m;
 
